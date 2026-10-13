@@ -1,0 +1,28 @@
+:root { color-scheme: light; --ink:#172033; --muted:#657086; --line:#dce2eb; --paper:#f4f6fa; --accent:#234f9b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; }
+.container { max-width:1000px; margin:0 auto; padding:32px 20px 48px; }
+header { margin:0 0 24px; }
+.eyebrow { color:var(--accent); font-size:.78rem; font-weight:800; letter-spacing:.12em; }
+h1 { font-size:clamp(2rem,5vw,3rem); margin:.2rem 0; line-height:1.15; }
+h2 { margin:0; font-size:1.2rem; }
+.subtitle { color:var(--muted); margin:.5rem 0; }
+.panel { background:white; border:1px solid var(--line); border-radius:16px; padding:24px; margin:18px 0; box-shadow:0 8px 30px #1720330a; }
+.panel-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+label { display:block; font-weight:650; font-size:.9rem; margin-bottom:16px; }
+input, select, textarea { width:100%; display:block; margin-top:6px; padding:11px 12px; border:1px solid #cbd3df; border-radius:9px; background:white; color:var(--ink); font:inherit; font-weight:400; }
+textarea { resize:vertical; }
+input:focus, select:focus, textarea:focus { outline:3px solid #234f9b25; border-color:var(--accent); }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+button { border:0; border-radius:9px; padding:11px 17px; background:var(--accent); color:white; font:inherit; font-weight:750; cursor:pointer; }
+button.secondary { background:#eaf0fa; color:#203b69; }
+button:hover { filter:brightness(.96); }
+.json { overflow:auto; background:#101827; color:#e5edf9; border-radius:10px; padding:16px; font-size:.85rem; white-space:pre-wrap; overflow-wrap:anywhere; }
+.hidden { display:none; }
+.result-card { border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; }
+.decision { font-size:1.45rem; font-weight:850; text-transform:uppercase; }
+.metric { color:var(--muted); font-size:.9rem; }
+.error { color:#a51f32; font-weight:650; }
+footer { color:var(--muted); font-size:.85rem; padding:12px 2px; }
+@media(max-width:650px) { .container { padding:20px 12px 32px; } .panel { padding:16px; } .grid { grid-template-columns:1fr; gap:0; } }

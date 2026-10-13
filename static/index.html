@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repair vs Replace</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="eyebrow">SERVICE DECISION TOOL</p>
+      <h1>Repair vs Replace</h1>
+      <p class="subtitle">Enter a service case to apply the manufacturer policy.</p>
+    </header>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <h2>Service case</h2>
+        <button type="button" id="loadExample" class="secondary">Load example</button>
+      </div>
+      <form id="caseForm">
+        <div class="grid">
+          <label>Case ID<input id="case_id" value="C-2001" required></label>
+          <label>Product category
+            <select id="product_category">
+              <option value="washing_machine">Washing machine</option>
+              <option value="refrigerator">Refrigerator</option>
+              <option value="dishwasher">Dishwasher</option>
+              <option value="oven_or_cooktop">Oven or cooktop</option>
+              <option value="air_conditioner">Air conditioner</option>
+              <option value="water_heater">Water heater</option>
+              <option value="microwave">Microwave</option>
+            </select>
+          </label>
+          <label>Product age (months)<input id="product_age_months" type="number" min="0" value="30"></label>
+          <label>Purchase price<input id="purchase_price" type="number" min="0" value="38000"></label>
+          <label>Replacement price<input id="replacement_price" type="number" min="0" value="36000"></label>
+          <label>Warranty status
+            <select id="warranty_status">
+              <option value="in_warranty">In warranty</option>
+              <option value="extended">Extended</option>
+              <option value="out_of_warranty" selected>Out of warranty</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </label>
+          <label>Fault category
+            <select id="fault_category">
+              <option value="no_power">No power</option>
+              <option value="not_heating">Not heating</option>
+              <option value="not_cooling">Not cooling</option>
+              <option value="water_leak">Water leak</option>
+              <option value="drainage_or_blockage">Drainage or blockage</option>
+              <option value="noise_or_vibration">Noise or vibration</option>
+              <option value="door_seal_or_latch">Door seal or latch</option>
+              <option value="control_panel_or_display">Control panel or display</option>
+              <option value="electrical_or_control_board">Electrical or control board</option>
+              <option value="motor_or_drive" selected>Motor or drive</option>
+              <option value="installation_or_setup">Installation or setup</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label>Part SKU<input id="part_sku" value="WM-MTR-114"></label>
+          <label>Part description<input id="part_description" value="Drive motor"></label>
+          <label>Part price<input id="part_price" type="number" min="0" value="6200"></label>
+          <label>Part lead time (days)<input id="lead_time_days" type="number" min="0" value="4"></label>
+          <label>Labour hours<input id="labour_hours" type="number" min="0" step="0.1" value="1.5"></label>
+          <label>Labour rate per hour<input id="labour_rate_per_hour" type="number" min="0" value="900"></label>
+          <label>Technician travel (one way, minutes)<input id="technician_travel_minutes" type="number" min="0" value="40"></label>
+          <label>Prior repairs in last 12 months<input id="prior_repairs_12m" type="number" min="0" value="0"></label>
+          <label>Customer sentiment
+            <select id="customer_sentiment">
+              <option value="negative">Negative</option>
+              <option value="neutral" selected>Neutral</option>
+              <option value="positive">Positive</option>
+            </select>
+          </label>
+        </div>
+        <label>Symptom text<textarea id="symptom_text" rows="3">drum does not turn, motor hums</textarea></label>
+        <div class="actions">
+          <button type="submit">Decide</button>
+          <button type="button" id="showJson" class="secondary">Preview request JSON</button>
+        </div>
+      </form>
+      <pre id="requestPreview" class="json hidden"></pre>
+    </section>
+
+    <section id="resultPanel" class="panel hidden" aria-live="polite">
+      <h2>Decision result</h2>
+      <div id="resultSummary"></div>
+      <pre id="responseJson" class="json"></pre>
+    </section>
+    <p id="error" class="error" role="alert"></p>
+    <footer>Runs locally through the FastAPI service. No external AI API is called.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
